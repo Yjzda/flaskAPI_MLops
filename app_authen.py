@@ -28,9 +28,9 @@ async def return_data(request: Request):
 
 def get_token_from_headers(request: Request) -> str:
     my_header = request.headers
-    return my_header.get("token", "")
-
-
+    token=my_header.get("token")
+    #return my_header.get("token", "")
+    return token
 
 
 
