@@ -25,9 +25,7 @@ async def return_data(request: Request):
         return {"data": "No data for you, you do not provide the correct token"}
     
 
-#this part is to return token, no use to use async, if i add async def get_token_from _headers and put
-#it in the same route, then i will not have prediction but only token value, if I need absolutely
-#rerturn token value, do a new route with decorator @app.post("new_route")
+
 def get_token_from_headers(request: Request) -> str:
     my_header = request.headers
     token=my_header.get("token")
@@ -39,7 +37,7 @@ def get_token_from_headers(request: Request) -> str:
 @app.post("/predict_cancer")
 
 async def predict_tumor(tumor_features_list: List[TumorFeatures], toker: str = Header(None, alias="token")):
-    token = toker  # Use the provided token header
+    token = toker  
 
     my_secret_token = "MonSecretToken"
 
